@@ -1,0 +1,29 @@
+.content-error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 8px 0;
+}
+
+.icon-error {
+  color: rgb(196, 26, 13);
+  margin-top: 8px;
+}
+
+.icon-warn {
+  color: rgb(241, 192, 29);
+  margin-top: 8px;
+}
+
+.icon-check {
+  color: rgb(14, 128, 61);
+  margin-top: 8px;
+}
+
+.warn {
+  font-size: 50px !important;
+  width: 50px;
+  height: 60px;
+  padding: 0;
+}

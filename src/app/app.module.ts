@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TeamsComponent } from './components/teams/teams.component';
 import { CreateTeamComponent } from './components/teams/create-team/create-team.component';
 import { EditTeamComponent } from './components/teams/edit-team/edit-team.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EditTeamComponent } from './components/teams/edit-team/edit-team.compon
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    SharedModule,
     MaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule

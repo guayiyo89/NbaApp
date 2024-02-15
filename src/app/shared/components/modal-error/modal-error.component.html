@@ -1,0 +1,39 @@
+<div class="content-error">
+  <div [ngClass]="{'icon-error': data.tipo === 'error', 'icon-check': data.tipo === 'check', 'icon-warn': data.tipo === 'warning'}">
+    <mat-icon class="warn" aria-hidden="false" [fontIcon]="data.tipo"></mat-icon>
+  </div>
+
+  <p>
+    {{ data.mensaje }}
+  </p>
+
+  <div *ngIf="hasActions else noActions">
+    <button
+      [mat-dialog-close]="false"
+      mat-flat-button
+      color="accent"
+      style="margin-right: 8px"
+    >
+      No
+    </button>
+    <button
+      [mat-dialog-close]="true"
+      mat-flat-button
+      color="primary"
+      style="margin-right: 8px"
+    >
+      Si
+    </button>
+  </div>
+
+  <ng-template #noActions>
+    <button
+      [mat-dialog-close]="true"
+      mat-flat-button
+      color="primary"
+      style="margin-right: 8px"
+    >
+      Salir
+    </button>
+  </ng-template>
+</div>

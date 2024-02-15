@@ -1,0 +1,20 @@
+.content-not-found {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+    width: 90%;
+  }
+  
+  .text-404 {
+      color: rgb(72, 21, 114);
+      font-size: 90px;
+      font-weight: 600;
+      user-select: none;
+  }
+  
+  h2 {
+      color: rgb(82, 168, 25)
+  }
