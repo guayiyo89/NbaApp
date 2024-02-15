@@ -12,6 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSortModule,
     MatTableModule,
     MatDividerModule,
+    MatSelectModule,
     MatInputModule,
   ],
   exports: [
@@ -41,6 +43,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSortModule,
     MatTableModule,
     MatDividerModule,
+    MatSelectModule,
     MatInputModule,
   ],
 })

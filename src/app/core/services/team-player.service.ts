@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { URLS } from 'src/app/constants/url.constant';
 import { ResTeam, Team } from '../interfaces/teams';
 import { environment } from 'src/environment/environment';
 import { Player, ResPlayer } from '../interfaces/player';
+import { URLS } from '../constants/url.constant';
 
 @Injectable({
   providedIn: 'root',

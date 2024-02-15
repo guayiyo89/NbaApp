@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,10 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TeamsComponent } from './components/teams/teams.component';
+import { CreateTeamComponent } from './components/teams/create-team/create-team.component';
+import { EditTeamComponent } from './components/teams/edit-team/edit-team.component';
 
 @NgModule({
   declarations: [
     TeamsComponent,
+    CreateTeamComponent,
+    EditTeamComponent,
     AppComponent
   ],
   imports: [
@@ -24,6 +28,7 @@ import { TeamsComponent } from './components/teams/teams.component';
     BrowserAnimationsModule
   ],
   providers: [],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

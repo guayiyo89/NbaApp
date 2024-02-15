@@ -1,49 +1,79 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { DIVISIONS } from 'src/app/core/constants/division.constant';
 import { Team } from 'src/app/core/interfaces/teams';
 
 @Component({
   selector: 'app-create-team',
   templateUrl: './create-team.component.html',
-  styleUrls: ['./create-team.component.css']
+  styleUrls: ['./create-team.component.css'],
 })
-export class CreateTeamComponent implements OnInit {
+export class CreateTeamComponent {
+  @Output() onClose: EventEmitter<any> = new EventEmitter();
   addForm: FormGroup;
-  conference: string = ''
+  conference: string = '';
 
-  divisions = [
-    {divisionValue: 'Southeast', conference: 'East'},
-    {divisionValue: 'Central', conference: 'East'},
-    {divisionValue: 'Atlantic', conference: 'East'},
-    {divisionValue: 'Southwest', conference: 'West'},
-    {divisionValue: 'Northwest', conference: 'West'},
-    {divisionValue: 'Pacific', conference: 'West'},
-  ];
+  divisions = DIVISIONS
 
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Team,  private fbuilder: FormBuilder) { 
+  constructor(
+    private fbuilder: FormBuilder,
+    public dialogRef: MatDialogRef<CreateTeamComponent>
+  ) {
     this.addForm = this.fbuilder.group({
       name: ['', Validators.required],
       city: ['', Validators.required],
       nick: ['', Validators.required],
       code: ['', Validators.required],
-      division: ['', Validators.required]
-    })
-  }
-
-  ngOnInit() {
+      division: ['', Validators.required],
+    });
   }
 
   setConference() {
-    let value = this.addForm.get('division')!.value
-    this.conference = this.divisions.filter(div => div.divisionValue == value)[0].conference
+    let value = this.addForm.get('division')!.value;
+    //como filtra por el nombre de division exacto se trae el valor que devuelve el arreglo
+    this.conference = this.divisions.filter(
+      (div) => div.divisionValue == value
+    )[0].conference;
   }
 
-  get f() { return this.addForm.controls; }
+  saveData() {
+    let data: Team = {
+      id: 999,
+      name: this.addForm.get('name')!.value,
+      nickname: this.addForm.get('nick')!.value,
+      city: this.addForm.get('city')!.value,
+      code: this.addForm.get('code')!.value,
+      logo: '',
+      allStar: false,
+      nbaFranchise: true,
+      leagues: {
+        standard: {
+          conference: this.conference,
+          division: this.addForm.get('division')!.value,
+        },
+        vegas: {
+          conference: this.conference,
+          division: this.addForm.get('division')!.value,
+        },
+        utah: {
+          conference: this.conference,
+          division: this.addForm.get('division')!.value,
+        },
+        sacramento: {
+          conference: this.conference,
+          division: this.addForm.get('division')!.value,
+        },
+      },
+    };
 
+    this.onClose.emit(data);
+    this.dialogRef.close();
+  }
+
+  get f() {
+    return this.addForm.controls;
+  }
 }
 
-const DIVISION = {
-  
-}
+const DIVISION = {};

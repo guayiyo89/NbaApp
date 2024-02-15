@@ -1,5 +1,5 @@
-<h2>Crear equipo</h2>
-<form [formGroup]="addForm" class="example-form">
+<h2>Editar {{data.name}}</h2>
+<form [formGroup]="editForm" class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Nombre</mat-label>
     <input type="text" matInput formControlName="name"
@@ -65,7 +65,7 @@
     mat-flat-button
     color="primary"
     (click)="saveData()"
-    [disabled]="addForm.invalid"
+    [disabled]="editForm.invalid"
     style="margin-right: 8px"
   >
     Guardar
