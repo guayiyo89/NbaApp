@@ -8,6 +8,7 @@ import { TeamPlayerService } from 'src/app/core/services/team-player.service';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ModalErrorComponent } from 'src/app/shared/components/modal-error/modal-error.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-teams',
@@ -16,6 +17,7 @@ import { ModalErrorComponent } from 'src/app/shared/components/modal-error/modal
 })
 export class TeamsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
   teams: Team[];
   filteredTeams: Team[];
   searchTeams: FormControl;
@@ -46,12 +48,13 @@ export class TeamsComponent implements OnInit, AfterViewInit {
       this.getTeams();
     } else {
       this.teams = teamsLS;
-      this.dataSource = new MatTableDataSource<Team>(this.teams);
+      this.dataSource = new MatTableDataSource<Team>(this.sortTeams(this.teams));
     }
   }
 
   ngAfterViewInit() {
     this.dataSource!.paginator = this.paginator!;
+    this.dataSource!.sort = this.sort!;
   }
 
   getTeams() {
@@ -74,12 +77,12 @@ export class TeamsComponent implements OnInit, AfterViewInit {
     let filteredData = this.teams.filter((team) =>
       team.name.toUpperCase().includes(texto.toUpperCase())
     );
-    this.dataSource = new MatTableDataSource<Team>(filteredData);
+    this.dataSource = new MatTableDataSource<Team>(this.sortTeams(filteredData));
     this.dataSource!.paginator = this.paginator!;
   }
 
   resetData() {
-    this.dataSource = new MatTableDataSource<Team>(this.teams);
+    this.dataSource = new MatTableDataSource<Team>(this.sortTeams(this.teams));
     this.dataSource!.paginator = this.paginator!;
     this.searchTeams.reset();
   }
@@ -184,5 +187,9 @@ export class TeamsComponent implements OnInit, AfterViewInit {
       data: { mensaje, tipo, actions },
       width: '620px',
     });
+  }
+
+  sortTeams(teams: Team[]) {
+    return teams.sort((a, b) => a.name.localeCompare(b.name))
   }
 }
