@@ -11,12 +11,16 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { CreateTeamComponent } from './components/teams/create-team/create-team.component';
 import { EditTeamComponent } from './components/teams/edit-team/edit-team.component';
 import { SharedModule } from './shared/shared.module';
+import { ImageFilePipe } from './core/pipes/image-file.pipe';
+import { ShowTeamComponent } from './components/teams/show-team/show-team.component';
 
 @NgModule({
   declarations: [
     TeamsComponent,
     CreateTeamComponent,
     EditTeamComponent,
+    ShowTeamComponent,
+    ImageFilePipe,
     AppComponent
   ],
   imports: [

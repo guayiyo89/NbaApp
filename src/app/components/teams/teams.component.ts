@@ -9,6 +9,7 @@ import { CreateTeamComponent } from './create-team/create-team.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ModalErrorComponent } from 'src/app/shared/components/modal-error/modal-error.component';
 import { MatSort } from '@angular/material/sort';
+import { ShowTeamComponent } from './show-team/show-team.component';
 
 @Component({
   selector: 'app-teams',
@@ -66,7 +67,6 @@ export class TeamsComponent implements OnInit, AfterViewInit {
         console.log(this.teams, 'servicio');
       },
       error: (_err) => {
-        console.log('error');
         this.showError('Ha ocurrido una falla en el servicio.', 'error', false);
       },
     });
@@ -133,6 +133,13 @@ export class TeamsComponent implements OnInit, AfterViewInit {
         );
         this.resetData();
       }
+    });
+  }
+
+  showTeam(team: Team) {
+    this.dialog.open(ShowTeamComponent, {
+      data: team,
+      width: '620px',
     });
   }
 

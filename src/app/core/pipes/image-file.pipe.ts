@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'image-file'
+  name: 'imageFile'
 })
 export class ImageFilePipe implements PipeTransform {
 
-  transform(imgFile: string): string {
+  transform(imgFile: string | undefined): string {
     const defaultImg = "assets/jpeg/no-image.jpg"
     return imgFile && imgFile.trim() !== '' ? imgFile : defaultImg
   }
