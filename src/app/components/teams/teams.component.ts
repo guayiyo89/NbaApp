@@ -64,6 +64,8 @@ export class TeamsComponent implements OnInit, AfterViewInit {
         this.teams = res.response.filter((team) => team.nbaFranchise == true);
         this.teamService.saveTeamsLS(this.teams);
         this.dataSource = new MatTableDataSource<Team>(this.teams);
+        this.dataSource!.paginator = this.paginator!;
+        this.dataSource!.sort = this.sort!;
         console.log(this.teams, 'servicio');
       },
       error: (_err) => {
@@ -92,14 +94,55 @@ export class TeamsComponent implements OnInit, AfterViewInit {
       disableClose: true,
       data: team,
       width: '620px',
-    });
+    }); 
 
     dialogRef.componentInstance.onClose.subscribe((data: Team) => {
       console.log(data);
-      // guardar el nuevo array en LS
-      // actualizar dataSource
-      // resetear tabla como el campo buscar
-      this.resetData();
+      const editRef = this.showError(`¿Está seguro de guardar los cambios a ${data.name}?`, 'warning', true)
+      
+      editRef.afterClosed().subscribe((res) => {
+        if(res) {
+          //vemos si el nombre no corresponde a ninguno de los demas equipos
+          const existingTeam = this.teams.find(
+            (teamEx) => teamEx.name.toUpperCase() === data.name.toUpperCase()
+          );
+
+          //eleimino el objeto a editar
+          if(!existingTeam || team.name.toUpperCase() === data.name.toUpperCase()) {
+            const index = this.teams.findIndex(
+              (teamEx) =>
+                teamEx.id === team.id &&
+                teamEx.name.toUpperCase() === team.name.toUpperCase()
+            );
+
+            if (index !== -1) {
+              this.teams.splice(index, 1);
+              //insertamos la nueva data
+              this.teams.push(data)
+              //actualizamos la tabla
+              this.resetData()
+              this.showError(
+                `${data.name} se ha editado correctamente.`,
+                'check',
+                false
+              );
+            } else {
+              this.showError(
+                'Ha ocurrido un error',
+                'error',
+                false
+              );
+            }
+
+          } else {
+            this.showError(
+              'Ya existe un equipo con el mismo nombre.',
+              'error',
+              false
+            );
+          }
+        }
+      })
     });
   }
 
@@ -188,15 +231,36 @@ export class TeamsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  sortTeams(teams: Team[]) {
+    return teams.sort((a, b) => a.name.localeCompare(b.name))
+  }
+
+  //vuelve a los datos tal como los trae la API
+  fullRestore() {
+    const restoreRef = this.dialog.open(ModalErrorComponent, {
+      disableClose: true,
+      data: {
+        mensaje: `ATENCIÓN: Esta acción restablece el contenido tal como lo trae la API externa. ¿Desea continuar?`,
+        tipo: 'warning',
+        actions: true,
+      },
+      width: '620px',
+    });
+
+    restoreRef.afterClosed().subscribe((res) => {
+      if(res) {
+        this.teamService.resetLS('teams')
+        this.getTeams()
+      }
+    })
+
+  }
+
   showError(mensaje: string, tipo: string, actions: boolean) {
-    const dialogErrorRef = this.dialog.open(ModalErrorComponent, {
+    return this.dialog.open(ModalErrorComponent, {
       disableClose: true,
       data: { mensaje, tipo, actions },
       width: '620px',
     });
-  }
-
-  sortTeams(teams: Team[]) {
-    return teams.sort((a, b) => a.name.localeCompare(b.name))
   }
 }

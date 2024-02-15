@@ -26,7 +26,7 @@ export class EditTeamComponent implements OnInit {
       name: ['', Validators.required],
       city: ['', Validators.required],
       nick: ['', Validators.required],
-      code: ['', Validators.required],
+      code: ['', [Validators.required, Validators.maxLength(3)]],
       division: ['', Validators.required],
     });
   }

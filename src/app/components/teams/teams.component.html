@@ -10,7 +10,7 @@
   />
 </mat-form-field>
 
-<div class="pagination-zone">
+<div class="options-zone">
   <button
     (click)="filterTeams()"
     mat-flat-button
@@ -108,4 +108,10 @@
     aria-label="Seleccionar pagina"
   >
   </mat-paginator>
+</div>
+
+<div>
+  <button (click)="fullRestore()" mat-flat-button color="warn">
+    Reseteo Forzoso
+  </button>
 </div>

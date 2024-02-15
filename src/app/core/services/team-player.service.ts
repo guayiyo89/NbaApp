@@ -41,4 +41,8 @@ export class TeamPlayerService {
   getPlayersByTeamLS(teamId: number): Player[] {
     return JSON.parse(localStorage.getItem(`players-team-${teamId}`)!);
   }
+
+  resetLS(key: string) {
+    localStorage.removeItem(key)
+  }
 }
