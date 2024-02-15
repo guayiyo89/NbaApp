@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { TeamsComponent } from './components/teams/teams.component';
 
 @NgModule({
   declarations: [
+    TeamsComponent,
     AppComponent
   ],
   imports: [

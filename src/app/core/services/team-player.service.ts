@@ -12,16 +12,16 @@ import { Player, ResPlayer } from '../interfaces/player';
 export class TeamPlayerService {
   constructor(private http: HttpClient) {}
 
-  headers = environment.headers
+  headers = environment.headers;
 
   getTeams(): Observable<ResTeam> {
-    let url = `${URLS.getTeams}`
-    return this.http.get<ResTeam>(url, {headers: this.headers})
+    let url = `${URLS.getTeams}`;
+    return this.http.get<ResTeam>(url, { headers: this.headers });
   }
 
   getPlayer(year: number, team: number): Observable<ResPlayer> {
-    let url = `${URLS.getPlayers}?team=${team}&season=${year}`
-    return this.http.get<ResPlayer>(url, {headers: this.headers})
+    let url = `${URLS.getPlayers}?team=${team}&season=${year}`;
+    return this.http.get<ResPlayer>(url, { headers: this.headers });
   }
 
   saveTeamsLS(teamData: Team[]) {
@@ -35,11 +35,10 @@ export class TeamPlayerService {
   }
 
   getTeamsLS(): Team[] {
-    return JSON.parse(localStorage.getItem('teams') || '{}');
+    return JSON.parse(localStorage.getItem('teams')!);
   }
 
   getPlayersByTeamLS(teamId: number): Player[] {
-    return JSON.parse(localStorage.getItem(`players-team-${teamId}`) || '{}');
+    return JSON.parse(localStorage.getItem(`players-team-${teamId}`)!);
   }
-
 }
