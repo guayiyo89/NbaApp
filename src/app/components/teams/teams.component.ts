@@ -100,7 +100,6 @@ export class TeamsComponent implements OnInit, AfterViewInit {
     }); 
 
     dialogRef.componentInstance.onClose.subscribe((data: Team) => {
-      console.log(data);
       const editRef = this.showError(`¿Está seguro de guardar los cambios a ${data.name}?`, 'warning', true)
       
       editRef.afterClosed().subscribe((res) => {
@@ -228,8 +227,6 @@ export class TeamsComponent implements OnInit, AfterViewInit {
             false
           );
         }
-      } else {
-        console.log('no quiso');
       }
     });
   }
