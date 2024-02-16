@@ -31,6 +31,13 @@ body {
   text-align: left;
 }
 
+.title-page {
+  padding-top: 12px;
+  display: block;
+  font-weight: 700;
+  border-bottom: 1px dotted #557;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -43,6 +50,26 @@ body {
 .btn-buscar {
     margin: 12px 2px;
 }
+
+.btn-action {
+  margin: 2px 8px;
+}
+
+.container-table {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .container-table {
+    overflow-x: scroll;
+  }
+
+  .title-page {
+    text-align: center;
+  }
+}
+
+/* MODAL */
 
 .modal-content {
   margin: 0 auto;
@@ -84,3 +111,6 @@ body {
     justify-content: center;
   }
 }
+
+
+/* FORM */

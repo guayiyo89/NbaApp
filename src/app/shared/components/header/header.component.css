@@ -1,0 +1,97 @@
+.header {
+  top: 0px;
+  padding-top: 4px;
+  width: 100%;
+  height: 40px;
+  border-bottom: 2px solid #334;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-col-1 {
+  flex: 1;
+}
+
+.title-header {
+  margin: 0 !important;
+  color: rgb(72, 21, 114);
+  user-select: none;
+}
+
+.header-menu {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  justify-content: end;
+  text-align: end;
+}
+
+.header-menu-el {
+  flex: 1;
+  padding-top: 8px;
+  background-color: #334;
+  font-weight: 400;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.header-menu-el:hover {
+  background-color: #557;
+  color: white;
+  transition: ease 600ms;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.menuPedia {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  height: 100%;
+  color: rgb(38, 97, 207);
+  font-weight: bolder;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.menuPedia:hover {
+  background-color: rgb(82, 168, 25);
+}
+
+.menuMobile {
+  width: 100%;
+  background-color: #557;
+}
+
+.showMenuMobile {
+  display: none;
+}
+
+.itemMobile {
+  color: #fff;
+  font-weight: 400;
+  height: 32px;
+  font-size: 14pt;
+  padding: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+.row-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.kol-header-title {
+  flex: 7;
+  text-align: center;
+}
+
+.kol-header-button {
+  flex: 1;
+}

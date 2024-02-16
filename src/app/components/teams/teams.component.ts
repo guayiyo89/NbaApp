@@ -93,7 +93,7 @@ export class TeamsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(EditTeamComponent, {
       disableClose: true,
       data: team,
-      width: '620px',
+      width: '512px',
     }); 
 
     dialogRef.componentInstance.onClose.subscribe((data: Team) => {
@@ -149,7 +149,7 @@ export class TeamsComponent implements OnInit, AfterViewInit {
   newTeam() {
     const dialogRef = this.dialog.open(CreateTeamComponent, {
       disableClose: true,
-      width: '620px',
+      width: '512px',
     });
 
     dialogRef.componentInstance.onClose.subscribe((data: Team) => {

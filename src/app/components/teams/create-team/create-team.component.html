@@ -1,90 +1,93 @@
-<h2>Crear equipo</h2>
-<form [formGroup]="addForm" class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Nombre</mat-label>
-    <input
-      type="text"
-      matInput
-      formControlName="name"
-      placeholder="Inserte nombre"
-    />
-    <mat-error *ngIf="f['name'].hasError('required')">
-      Ingrese un nombre al equipo
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Ciudad</mat-label>
-    <input
-      type="text"
-      onkeydown="return /[a-zñ, ]/i.test(event.key)"
-      matInput
-      formControlName="city"
-      placeholder="Inserte ciudad"
-    />
-    <mat-error *ngIf="f['city'].hasError('required')">
-      Ingrese la ciudad del equipo
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Apodo</mat-label>
-    <input
-      type="text"
-      matInput
-      formControlName="nick"
-      placeholder="Inserte apodo del equipo"
-    />
-    <mat-error *ngIf="f['nick'].hasError('required')">
-      Ingrese el apodo del equipo
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Código</mat-label>
-    <input
-      oninput="this.value = this.value.toUpperCase()"
-      type="text"
-      maxlength="3"
-      matInput
-      formControlName="code"
-      placeholder="Ingrese código"
-    />
-    <mat-error *ngIf="f['code'].hasError('required')">
-      Ingrese el código del equipo
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Division</mat-label>
-    <mat-select formControlName="division" (selectionChange)="setConference()">
-      <mat-option *ngFor="let item of divisions" [value]="item.divisionValue">
-        {{ item.divisionValue }}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="f['division'].hasError('required')">
-      Seleccione una division
-    </mat-error>
-  </mat-form-field>
-</form>
-
-<div class="button-area">
-  <button
-    [mat-dialog-close]="true"
-    mat-flat-button
-    color="primary"
-    style="margin-right: 8px"
-  >
-    Salir
-  </button>
-
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="saveData()"
-    [disabled]="addForm.invalid"
-    style="margin-right: 8px"
-  >
-    Guardar
-  </button>
+<h2 class="title-modal">Crear equipo</h2>
+<div class="modal-content">
+  <form [formGroup]="addForm" class="example-form">
+    <mat-form-field class="w-100">
+      <mat-label>Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="name"
+        placeholder="Inserte nombre"
+      />
+      <mat-error *ngIf="f['name'].hasError('required')">
+        Ingrese un nombre al equipo
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="w-100">
+      <mat-label>Ciudad</mat-label>
+      <input
+        type="text"
+        onkeydown="return /[a-zñ, ]/i.test(event.key)"
+        matInput
+        formControlName="city"
+        placeholder="Inserte ciudad"
+      />
+      <mat-error *ngIf="f['city'].hasError('required')">
+        Ingrese la ciudad del equipo
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="w-100">
+      <mat-label>Apodo</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="nick"
+        placeholder="Inserte apodo del equipo"
+      />
+      <mat-error *ngIf="f['nick'].hasError('required')">
+        Ingrese el apodo del equipo
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="w-100">
+      <mat-label>Código</mat-label>
+      <input
+        oninput="this.value = this.value.toUpperCase()"
+        type="text"
+        maxlength="3"
+        matInput
+        formControlName="code"
+        placeholder="Ingrese código"
+      />
+      <mat-error *ngIf="f['code'].hasError('required')">
+        Ingrese el código del equipo
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Division</mat-label>
+      <mat-select formControlName="division" (selectionChange)="setConference()">
+        <mat-option *ngFor="let item of divisions" [value]="item.divisionValue">
+          {{ item.divisionValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f['division'].hasError('required')">
+        Seleccione una division
+      </mat-error>
+    </mat-form-field>
+  </form>
+  
+  <div class="button-area">
+    <button
+      [mat-dialog-close]="true"
+      mat-flat-button
+      color="primary"
+      style="margin-right: 8px"
+    >
+      Salir
+    </button>
+  
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="saveData()"
+      [disabled]="addForm.invalid"
+      style="margin-right: 8px"
+    >
+      Guardar
+    </button>
+  </div>
 </div>
+
