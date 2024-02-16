@@ -73,14 +73,14 @@
           <!-- Birthday Column -->
           <ng-container matColumnDef="birth">
             <th mat-header-cell *matHeaderCellDef>Fecha Nac.</th>
-            <td mat-cell *matCellDef="let player">{{ player.birth.date }}</td>
+            <td mat-cell *matCellDef="let player">{{ player.birth.date | fechas }}</td>
           </ng-container>
     
           <!-- Country Column -->
           <ng-container matColumnDef="country">
             <th mat-header-cell *matHeaderCellDef>Pais / Region</th>
             <td mat-cell *matCellDef="let player">
-              {{ player.birth.country }}
+              {{ player.birth.country | generalData }}
             </td>
           </ng-container>
     
@@ -88,7 +88,7 @@
           <ng-container matColumnDef="height">
             <th mat-header-cell *matHeaderCellDef>Altura (m)</th>
             <td mat-cell *matCellDef="let player">
-              {{ player.height.meters }}
+              {{ player.height.meters | generalData }}
             </td>
           </ng-container>
     
@@ -96,7 +96,7 @@
           <ng-container matColumnDef="weight">
             <th mat-header-cell *matHeaderCellDef>Peso (kg)</th>
             <td mat-cell *matCellDef="let player">
-              {{ player.weight.kilograms }}
+              {{ player.weight.kilograms | generalData }}
             </td>
           </ng-container>
     

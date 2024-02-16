@@ -14,6 +14,8 @@ import { SharedModule } from './shared/shared.module';
 import { ImageFilePipe } from './core/pipes/image-file.pipe';
 import { ShowTeamComponent } from './components/teams/show-team/show-team.component';
 import { PlayersComponent } from './components/players/players.component';
+import { GeneralDataPipe } from './core/pipes/general-data.pipe';
+import { FechasPipe } from './core/pipes/fechas.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PlayersComponent } from './components/players/players.component';
     EditTeamComponent,
     ShowTeamComponent,
     ImageFilePipe,
+    GeneralDataPipe,
+    FechasPipe,
     AppComponent
   ],
   imports: [

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -52,6 +52,7 @@ export class PlayersComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('ok');
     let teamsLS = this.teamService.getTeamsLS();
     if (!teamsLS) {
       this.getTeams();
@@ -105,10 +106,14 @@ export class PlayersComponent implements OnInit {
     if (!playerLS) {
       this.getPlayers(this.teamSelected?.id!);
     } else {
-      this.players = playerLS;
-      this.dataSource = new MatTableDataSource<Player>(this.players);
-      this.dataSource!.paginator = this.paginator!;
-      this.dataSource!.sort = this.sort!;
+      //retarda la carga hasta renderizar el paginator
+      let loading = setTimeout(() => {
+        this.players = playerLS;
+        this.dataSource = new MatTableDataSource<Player>(this.players);
+        this.dataSource!.paginator = this.paginator!;
+        this.dataSource!.sort = this.sort!;
+        this.paginator!.firstPage();
+      }, 500);
     }
     this.resetSearchControl();
   }
@@ -116,8 +121,10 @@ export class PlayersComponent implements OnInit {
   filterPlayer() {
     let texto = this.searchPlayer.value!;
     let filteredData = this.players.filter((player) => {
-      return player.firstname.toUpperCase().includes(texto.toUpperCase()) ||
-        player.lastname.toUpperCase().includes(texto.toUpperCase());
+      return (
+        player.firstname.toUpperCase().includes(texto.toUpperCase()) ||
+        player.lastname.toUpperCase().includes(texto.toUpperCase())
+      );
     });
     this.dataSource = new MatTableDataSource<Player>(filteredData);
     this.dataSource!.paginator = this.paginator!;
