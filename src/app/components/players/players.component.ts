@@ -52,7 +52,6 @@ export class PlayersComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ok');
     let teamsLS = this.teamService.getTeamsLS();
     if (!teamsLS) {
       this.getTeams();
