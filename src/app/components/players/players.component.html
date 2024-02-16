@@ -28,13 +28,112 @@
   </mat-form-field>
 
   <div *ngIf="teamSelected else noTeam">
-    <h2>{{teamSelected.name}}</h2>
+    <h2 class="team-selected">{{teamSelected.name}}</h2>
+
+    <div>
+      <mat-form-field class="w-100" *ngIf="players.length > 0">
+        <mat-label>Buscar jugador</mat-label>
+        <input
+          matInput
+          type="text"
+          id="searchPlayer"
+          placeholder="Buscar jugador por nombre"
+          [formControl]="searchPlayer"
+          (keyup.enter)="filterPlayer()"
+        />
+      </mat-form-field>
+  
+      <div class="options-zone text-center" *ngIf="players.length > 0">
+        <button
+          class="btn-buscar"
+          (click)="filterPlayer()"
+          mat-flat-button
+          color="primary"
+        >
+          Buscar
+        </button>
+        <button
+          class="btn-buscar"
+          (click)="resetData()"
+          mat-flat-button
+          color="primary"
+        >
+          Reestablecer
+        </button>
+      </div>
+  
+      <div class="container-table">
+        <table mat-table [dataSource]="dataSource!" matSort *ngIf="players.length > 0 else noPlayer">
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let player">{{ player.firstname }} {{ player.lastname }}</td>
+          </ng-container>
+    
+          <!-- Birthday Column -->
+          <ng-container matColumnDef="birth">
+            <th mat-header-cell *matHeaderCellDef>Fecha Nac.</th>
+            <td mat-cell *matCellDef="let player">{{ player.birth.date }}</td>
+          </ng-container>
+    
+          <!-- Country Column -->
+          <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef>Pais / Region</th>
+            <td mat-cell *matCellDef="let player">
+              {{ player.birth.country }}
+            </td>
+          </ng-container>
+    
+          <!-- Height Column -->
+          <ng-container matColumnDef="height">
+            <th mat-header-cell *matHeaderCellDef>Altura (m)</th>
+            <td mat-cell *matCellDef="let player">
+              {{ player.height.meters }}
+            </td>
+          </ng-container>
+    
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Peso (kg)</th>
+            <td mat-cell *matCellDef="let player">
+              {{ player.weight.kilograms }}
+            </td>
+          </ng-container>
+    
+          <!-- Start Column -->
+          <ng-container matColumnDef="start">
+            <th mat-header-cell *matHeaderCellDef>Año inicio</th>
+            <td mat-cell *matCellDef="let player">
+              {{ player.nba.start }}
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <ng-template #noPlayer>
+          <p class="no-team text-center">
+            No posee jugadores inscritos.
+          </p>
+        </ng-template>
+    
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Seleccionar pagina"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+
   </div>
+
+
 
   <ng-template #noTeam>
     <p class="no-team text-center">
       Por favor seleccione un equipo
     </p>
-
   </ng-template>
 </div>

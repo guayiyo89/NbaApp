@@ -19,7 +19,7 @@ export class TeamPlayerService {
     return this.http.get<ResTeam>(url, { headers: this.headers });
   }
 
-  getPlayer(year: number, team: number): Observable<ResPlayer> {
+  getPlayer(team: number, year: number): Observable<ResPlayer> {
     let url = `${URLS.getPlayers}?team=${team}&season=${year}`;
     return this.http.get<ResPlayer>(url, { headers: this.headers });
   }

@@ -80,11 +80,15 @@ export class TeamsComponent implements OnInit, AfterViewInit {
     );
     this.dataSource = new MatTableDataSource<Team>(this.sortTeams(filteredData));
     this.dataSource!.paginator = this.paginator!;
+    this.dataSource!.sort = this.sort!;
+    this.paginator!.firstPage();
   }
 
   resetData() {
     this.dataSource = new MatTableDataSource<Team>(this.sortTeams(this.teams));
     this.dataSource!.paginator = this.paginator!;
+    this.dataSource!.sort = this.sort!;
+    this.paginator!.firstPage();
     this.searchTeams.reset();
   }
 
