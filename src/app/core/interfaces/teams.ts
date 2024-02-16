@@ -19,7 +19,7 @@ export interface ResTeam {
   }
   
   export interface Leagues {
-    standard?: Standard
+    standard: Standard
     vegas?: Vegas
     utah?: Utah
     sacramento?: Sacramento
@@ -27,8 +27,8 @@ export interface ResTeam {
   }
   
   export interface Standard {
-    conference?: string
-    division?: string
+    conference: string
+    division: string
   }
   
   export interface Vegas {

@@ -7,8 +7,7 @@ import { DIVISIONS } from 'src/app/core/constants/division.constant';
 
 @Component({
   selector: 'app-edit-team',
-  templateUrl: './edit-team.component.html',
-  styleUrls: ['./edit-team.component.css']
+  templateUrl: './edit-team.component.html'
 })
 export class EditTeamComponent implements OnInit {
   @Output() onClose: EventEmitter<any> = new EventEmitter();

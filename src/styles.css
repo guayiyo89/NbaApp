@@ -1,4 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0 auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.container {
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 900px !important;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-end {
+  text-align: right;
+}
+
+.text-start {
+  text-align: left;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.button-area {
+  margin-top: 8px;
+  text-align: right;
+}
+
+.btn-buscar {
+    margin: 12px 2px;
+}
+
+.modal-content {
+  margin: 0 auto;
+  margin-top: 8px;
+  width: 85%;
+  margin-bottom: 8px;
+}
+
+.title-modal {
+  width: 100%;
+  text-align: center;
+  font-size: 22pt;
+  font-weight: 600;
+  border-bottom: 1px solid #334;
+}
+
+.row-modal {
+  display: flex;
+  flex-direction: row;
+}
+
+.col-modal {
+  flex: 1;
+}
+
+.data-title {
+    color: #334;;
+    font-weight: 600;
+    font-size: 14pt;
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #334;
+}
+
+@media (max-width: 600px) {
+  .row-modal {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

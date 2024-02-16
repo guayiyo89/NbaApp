@@ -6,8 +6,7 @@ import { Team } from 'src/app/core/interfaces/teams';
 
 @Component({
   selector: 'app-create-team',
-  templateUrl: './create-team.component.html',
-  styleUrls: ['./create-team.component.css'],
+  templateUrl: './create-team.component.html'
 })
 export class CreateTeamComponent {
   @Output() onClose: EventEmitter<any> = new EventEmitter();
