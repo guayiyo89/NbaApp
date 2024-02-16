@@ -66,7 +66,6 @@ export class TeamsComponent implements OnInit, AfterViewInit {
         this.dataSource = new MatTableDataSource<Team>(this.teams);
         this.dataSource!.paginator = this.paginator!;
         this.dataSource!.sort = this.sort!;
-        console.log(this.teams, 'servicio');
       },
       error: (_err) => {
         this.showError('Ha ocurrido una falla en el servicio.', 'error', false);

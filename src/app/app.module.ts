@@ -13,11 +13,13 @@ import { EditTeamComponent } from './components/teams/edit-team/edit-team.compon
 import { SharedModule } from './shared/shared.module';
 import { ImageFilePipe } from './core/pipes/image-file.pipe';
 import { ShowTeamComponent } from './components/teams/show-team/show-team.component';
+import { PlayersComponent } from './components/players/players.component';
 
 @NgModule({
   declarations: [
     TeamsComponent,
     CreateTeamComponent,
+    PlayersComponent,
     EditTeamComponent,
     ShowTeamComponent,
     ImageFilePipe,

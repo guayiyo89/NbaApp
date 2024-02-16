@@ -1,3 +1,40 @@
 <div class="container">
   <h1 class="title-page">Jugadores</h1>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Seleccionar equipo</mat-label>
+    <mat-select
+      [formControl]="searchTeam"
+      (selectionChange)="selectTeam()"
+    >
+      <mat-form-field class="w-100">
+        <input
+          [formControl]="teamFieldText"
+          (keyup)="filterData($event)"
+          matInput
+          placeholder="Buscar ..."
+        />
+      </mat-form-field>
+      <mat-option *ngIf="!filterFound" disabled>
+        Sin datos encontrados
+      </mat-option>
+      <mat-option
+        *ngFor="let item of filteredTeams"
+        [value]="item"
+      >
+        {{ item.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="teamSelected else noTeam">
+    <h2>{{teamSelected.name}}</h2>
+  </div>
+
+  <ng-template #noTeam>
+    <p class="no-team text-center">
+      Por favor seleccione un equipo
+    </p>
+
+  </ng-template>
 </div>
